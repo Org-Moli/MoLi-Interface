@@ -1,9 +1,6 @@
 package com.moli.test.bean;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 /**
  * <p>名称</p>
  * <p/>
@@ -13,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @version 1.0
  * @Date 2017/3/20
  */
-public class Message {
+//@XmlRootElement
+public class Message{
 
     private String name;
     private String text;
