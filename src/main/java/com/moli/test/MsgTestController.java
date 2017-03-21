@@ -1,9 +1,9 @@
 package com.moli.test;
 
 import com.moli.test.bean.Message;
+import com.moli.test.dao.SysUserMapper;
 import com.moli.util.ApiAuthUtil;
-import com.moli.util.Signature;
-import org.springframework.util.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,6 +27,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/msg")
 public class MsgTestController {
+    @Autowired
+    private SysUserMapper sysUserMapper;
+
     @RequestMapping(value = "/say/{name}",method= RequestMethod.GET)
     public Map say(@PathVariable("name") String name,
                        HttpServletRequest request) {
@@ -56,5 +60,12 @@ public class MsgTestController {
         message.put("name", name);
         message.put("helloMap", "hello," + name);
         return message;
+    }
+
+    @RequestMapping("/listSysUser")
+    public Map listSysUser(String name) {
+        Map userMap = new HashMap<>();
+        userMap.put("sysUserList",sysUserMapper.listSysUser());
+        return userMap;
     }
 }
