@@ -31,6 +31,10 @@
         </property>
     </bean>
 
+    <mvc:interceptors>
+        <bean id="authorizeInterceptor" class="com.moli.interceptor.ControllerLogIntercept"/>
+    </mvc:interceptors>
+
     <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="location" value="classpath:dbconfig.properties"/>
     </bean>

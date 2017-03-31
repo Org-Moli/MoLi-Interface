@@ -57,7 +57,7 @@ public class ApiAuthUtil {
         String md5 = null;
         try
         {
-            md5 = Signature.md5(allStr);
+            md5 = Md5Utils.md5(allStr);
             System.out.println("md5:" + md5);
         } catch (Exception e)
         {
