@@ -2,6 +2,7 @@ package com.moli.user.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 
 import java.util.Map;
 
@@ -33,4 +34,7 @@ public interface UserInfoMapper {
             "   and password = #{password}"
     })
     Map<String,Object> loginUser(@Param("logonId") String logonId, @Param("password") String password);
+
+    @SelectProvider(type = UserInfoSqlProvider.class,method = "saveUserInfo")
+    void saveUserInfo(Map<String,Object> paramsMap);
 }
